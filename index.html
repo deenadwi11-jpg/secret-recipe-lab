@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Secret Recipe Lab | Procedure Text</title>
+<style>
+:root{--ink:#26324b;--muted:#65718a;--paper:#fffdf8;--white:#fff;--coral:#ff806e;--yellow:#ffd166;--mint:#72d6b1;--blue:#80bfff;--purple:#b49aff;--line:#e9e8f0;--shadow:0 12px 30px rgba(46,57,88,.10)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:linear-gradient(135deg,#fff8e8,#f1f8ff 55%,#f8f1ff);font-family:ui-rounded,"Trebuchet MS",system-ui,sans-serif;color:var(--ink);min-height:100vh}
+button,input,textarea,select{font:inherit}button{cursor:pointer;border:0}
+.topbar{position:sticky;top:0;z-index:10;background:rgba(255,253,248,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.topinner{max-width:1120px;margin:auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:900;letter-spacing:.2px}.logo{width:42px;height:42px;border-radius:14px;background:var(--yellow);display:grid;place-items:center;font-size:23px;box-shadow:inset 0 -4px rgba(0,0,0,.07)}
+.topright{display:flex;align-items:center;gap:12px;color:var(--muted);font-size:13px}.progress{width:110px;height:9px;background:#ececf3;border-radius:99px;overflow:hidden}.progress span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--coral),var(--yellow),var(--mint));transition:width .4s}
+.wrap{max-width:1120px;margin:28px auto;padding:0 20px 60px}.hero{display:grid;grid-template-columns:1.25fr .75fr;gap:22px;align-items:stretch}
+.heroText{background:var(--white);border:1px solid var(--line);border-radius:28px;padding:32px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.kicker{display:inline-flex;align-items:center;gap:7px;background:#fff1c9;color:#805b00;padding:7px 12px;border-radius:99px;font-size:12px;font-weight:900;letter-spacing:.5px;text-transform:uppercase}
+h1{font-size:clamp(34px,5vw,54px);line-height:1.03;margin:16px 0 12px;letter-spacing:-1.8px}h1 span{color:#f06f5e}.lead{color:var(--muted);font-size:16px;line-height:1.65;max-width:620px}
+.heroActions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}.btn{padding:12px 18px;border-radius:14px;font-weight:900;transition:.2s;box-shadow:0 4px 0 rgba(0,0,0,.08)}.btn:hover{transform:translateY(-2px)}.primary{background:var(--coral);color:white}.secondary{background:#eef4ff;color:#35517b}.soft{background:#f1f0f7;color:#505a70}.heroArt{background:linear-gradient(145deg,#ffe2a8,#ffd0c7 60%,#e6d9ff);border-radius:28px;min-height:270px;display:grid;place-items:center;position:relative;overflow:hidden;box-shadow:var(--shadow)}
+.foodEmoji{font-size:clamp(100px,16vw,170px);filter:drop-shadow(0 16px 8px rgba(92,55,35,.15));animation:bob 3s ease-in-out infinite}.spark{position:absolute;font-size:26px;animation:twinkle 2s infinite alternate}.s1{top:18%;left:15%}.s2{top:20%;right:17%;animation-delay:.5s}.s3{bottom:17%;left:20%;animation-delay:1s}
+@keyframes bob{50%{transform:translateY(-10px) rotate(3deg)}}@keyframes twinkle{to{transform:scale(1.3) rotate(18deg);opacity:.55}}
+.infoStrip{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0 28px}.info{background:rgba(255,255,255,.8);border:1px solid var(--line);border-radius:17px;padding:14px 16px;display:flex;gap:10px;align-items:center}.info b{display:block;font-size:13px}.info small{color:var(--muted)}
+.layout{display:grid;grid-template-columns:250px 1fr;gap:20px;align-items:start}.sidebar{background:white;border:1px solid var(--line);border-radius:22px;padding:14px;box-shadow:var(--shadow);position:sticky;top:82px}
+.sideTitle{font-size:11px;color:#9aa1b2;font-weight:900;letter-spacing:1px;padding:8px 10px}.navbtn{width:100%;text-align:left;background:transparent;padding:12px;border-radius:13px;display:flex;gap:11px;align-items:center;color:#536078;font-weight:800;margin:3px 0}.navbtn .num{width:28px;height:28px;border-radius:9px;background:#f1f2f7;display:grid;place-items:center;font-size:12px}.navbtn.active{background:#fff0ed;color:#b84e40}.navbtn.active .num{background:var(--coral);color:white}.navbtn.done .num{background:#dff8ed;color:#18855d}
+.main{min-width:0}.panel{display:none;background:white;border:1px solid var(--line);border-radius:24px;padding:26px;box-shadow:var(--shadow);animation:fade .25s ease}.panel.active{display:block}@keyframes fade{from{opacity:.4;transform:translateY(5px)}to{opacity:1;transform:none}}
+.panelHead{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;margin-bottom:20px}.eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:1.1px;color:#e16b59;font-weight:900}.panel h2{font-size:27px;margin:5px 0 7px;letter-spacing:-.5px}.sub{color:var(--muted);line-height:1.6;margin:0}.time{background:#f2f5ff;color:#60749b;border-radius:99px;padding:7px 11px;font-size:12px;font-weight:900;white-space:nowrap}
+.promptBox{background:#fff8e6;border:1px solid #f7e5b8;border-radius:18px;padding:19px;margin:16px 0}.promptBox h3{margin:0 0 8px}.promptBox p{color:#6e613f;line-height:1.55;margin:0}
+.choiceGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0}.choice{border:2px solid var(--line);background:#fff;border-radius:17px;padding:14px;text-align:center;transition:.2s}.choice:hover,.choice.selected{border-color:var(--coral);background:#fff6f3;transform:translateY(-2px)}.choice .emoji{font-size:35px;display:block;margin-bottom:7px}.choice strong{font-size:14px}.feedback{padding:12px 14px;border-radius:13px;margin-top:12px;display:none;font-weight:700;font-size:14px}.feedback.show{display:block}.good{background:#e5f8ef;color:#16724f}.hint{background:#fff2d7;color:#805d16}
+.twoCol{display:grid;grid-template-columns:1fr 1fr;gap:14px}.miniCard{border:1px solid var(--line);border-radius:17px;padding:17px;background:#fff}.miniCard h3{margin:0 0 8px;font-size:17px}.miniCard p,.miniCard li{color:var(--muted);line-height:1.55;font-size:14px}.miniCard ul{padding-left:19px;margin:8px 0}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;margin:17px 0}.step{background:#f8f8fc;border-radius:15px;padding:14px}.step .n{width:28px;height:28px;border-radius:9px;background:var(--yellow);display:grid;place-items:center;font-weight:900;margin-bottom:9px}.step b{display:block;margin-bottom:4px}.step small{color:var(--muted);line-height:1.45}
+.word{display:inline-block;background:#eef5ff;color:#41658f;padding:4px 8px;border-radius:7px;font-weight:800;margin:3px;font-size:13px}
+.example{background:#f5f1ff;border:1px solid #e5dcff;border-radius:18px;padding:18px;margin:14px 0}.example h3{margin:0 0 8px}.example ol{margin:8px 0;padding-left:22px;line-height:1.7;color:#56516f}
+.tip{background:#eafaf4;border-left:4px solid var(--mint);padding:13px 15px;border-radius:0 12px 12px 0;color:#326b58;font-size:14px;line-height:1.5;margin:15px 0}
+.quizQ{padding:17px;border:1px solid var(--line);border-radius:17px;margin:13px 0}.quizQ h3{font-size:16px;margin:0 0 12px}.answers{display:grid;gap:8px}.answer{text-align:left;background:#f7f8fb;padding:11px 13px;border-radius:11px;color:#46536b;border:1px solid transparent}.answer:hover{border-color:#9ebfff}.answer.correct{background:#e4f8ee;border-color:#79d3a8;color:#176c4a}.answer.wrong{background:#fff0ed;border-color:#ff9d8e;color:#a7473a}.explain{font-size:13px;color:var(--muted);margin-top:9px;display:none;line-height:1.5}.explain.show{display:block}
+.field{display:grid;gap:6px;margin:12px 0}.field label{font-size:13px;font-weight:900;color:#59657b}.field input,.field textarea,.field select{width:100%;border:1.5px solid #e4e6ee;border-radius:12px;padding:11px 12px;outline:none;background:#fff;color:var(--ink)}.field input:focus,.field textarea:focus{border-color:#83b6ff;box-shadow:0 0 0 3px #eaf3ff}.field textarea{min-height:76px;resize:vertical}.builderGrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.recipeOutput{background:#fff8e9;border:1px dashed #e8c66e;border-radius:18px;padding:18px;min-height:190px}.recipeOutput h3{margin:0 0 8px}.recipeOutput p,.recipeOutput li{line-height:1.6;color:#665b45}.empty{color:#9a927f;font-style:italic}.modalBack{position:fixed;inset:0;background:rgba(30,39,59,.45);display:none;place-items:center;z-index:30;padding:20px}.modalBack.show{display:grid}.modal{background:white;border-radius:22px;padding:24px;max-width:430px;width:100%;box-shadow:0 20px 60px #18213c44}.modal h3{margin:0 0 8px}.modal p{color:var(--muted);line-height:1.6}.close{float:right;background:#f1f2f7;border-radius:10px;padding:7px 10px}
+.footerNav{display:flex;justify-content:space-between;gap:10px;margin-top:18px}.muted{color:var(--muted)}.tiny{font-size:12px;color:var(--muted)}.badge{display:inline-block;background:#e8f8f1;color:#237a59;padding:5px 9px;border-radius:99px;font-size:11px;font-weight:900}
+@media(max-width:800px){.hero{grid-template-columns:1fr}.heroArt{min-height:190px}.layout{grid-template-columns:1fr}.sidebar{position:static;display:flex;overflow:auto;gap:5px}.sideTitle{display:none}.navbtn{min-width:max-content;width:auto;margin:0}.infoStrip{grid-template-columns:1fr}.infoStrip .info{padding:10px 14px}.choiceGrid{grid-template-columns:1fr 1fr}.steps{grid-template-columns:1fr}.twoCol,.builderGrid{grid-template-columns:1fr}.panel{padding:19px}.panelHead{flex-direction:column}}
+@media(max-width:460px){.topright .progress{display:none}.heroText{padding:23px}.choiceGrid{grid-template-columns:1fr 1fr}.choice{padding:10px 5px}.choice .emoji{font-size:29px}}
+</style>
+</head>
+<body>
+<header class="topbar"><div class="topinner">
+  <div class="brand"><div class="logo">🥣</div><div>SECRET RECIPE LAB<small style="display:block;font-size:10px;color:#8791a5;font-weight:700;letter-spacing:1px">ENGLISH LEARNING ADVENTURE</small></div></div>
+  <div class="topright"><span id="progressText">0% completed</span><div class="progress"><span id="progressBar"></span></div></div>
+</div></header>
+<div class="wrap">
+<section class="hero">
+ <div class="heroText">
+  <span class="kicker">✨ Let's cook with words!</span>
+  <h1>My Secret <span>Recipe</span></h1>
+  <p class="lead">Have you ever wanted to share your favourite food with a friend? Today, become a young chef and learn how to write and present a clear <b>procedure text</b> in English.</p>
+  <div class="heroActions"><button class="btn primary" onclick="go('warmup')">Start the adventure →</button><button class="btn secondary" onclick="showModal()">Learning goals</button></div>
+ </div>
+ <div class="heroArt" aria-label="Illustration of a bowl of food"><span class="spark s1">✨</span><span class="spark s2">⭐</span><span class="spark s3">🍓</span><div class="foodEmoji">🍜</div></div>
+</section>
+<div class="infoStrip">
+ <div class="info"><span style="font-size:25px">⏱️</span><div><b>30–40 minutes</b><small>Learn at your own pace</small></div></div>
+ <div class="info"><span style="font-size:25px">🎯</span><div><b>Learn by doing</b><small>Explore, practise, create</small></div></div>
+ <div class="info"><span style="font-size:25px">🏆</span><div><b>Final mission</b><small>Publish your secret recipe</small></div></div>
+</div>
+<div class="layout">
+ <aside class="sidebar">
+  <div class="sideTitle">YOUR LEARNING PATH</div>
+  <button class="navbtn active" data-page="warmup" onclick="go('warmup')"><span class="num">01</span> Food warm-up</button>
+  <button class="navbtn" data-page="part1" onclick="go('part1')"><span class="num">02</span> Meet the text</button>
+  <button class="navbtn" data-page="part2" onclick="go('part2')"><span class="num">03</span> Text structure</button>
+  <button class="navbtn" data-page="part3" onclick="go('part3')"><span class="num">04</span> Language tools</button>
+  <button class="navbtn" data-page="part4" onclick="go('part4')"><span class="num">05</span> Recipe example</button>
+  <button class="navbtn" data-page="quiz" onclick="go('quiz')"><span class="num">06</span> Quick challenge</button>
+  <button class="navbtn" data-page="mission" onclick="go('mission')"><span class="num">07</span> My recipe mission</button>
+ </aside>
+ <main class="main">
+  <section class="panel active" id="warmup">
+   <div class="panelHead"><div><div class="eyebrow">01 · Apersepsi / 5–10 min</div><h2>What's on your plate?</h2><p class="sub">Imagine your best friend visits your home. They ask, “How do you make your favourite snack?” What will you say?</p></div><span class="time">🍽️ Warm-up</span></div>
+   <div class="promptBox"><h3>💬 Let's think!</h3><p>Choose one food you love. Think about its ingredients and the steps to make it. You don't need perfect English yet—just share your ideas!</p></div>
+   <h3 style="margin:18px 0 8px">Which food would you like to teach your friend to make?</h3>
+   <div class="choiceGrid">
+    <button class="choice" onclick="pickFood(this,'🍌','Banana fritters')"><span class="emoji">🍌</span><strong>Banana fritters</strong></button>
+    <button class="choice" onclick="pickFood(this,'🍜','Fried noodles')"><span class="emoji">🍜</span><strong>Fried noodles</strong></button>
+    <button class="choice" onclick="pickFood(this,'🥪','Sandwich')"><span class="emoji">🥪</span><strong>Sandwich</strong></button>
+    <button class="choice" onclick="pickFood(this,'🍚','Fried rice')"><span class="emoji">🍚</span><strong>Fried rice</strong></button>
+    <button class="choice" onclick="pickFood(this,'🥞','Pancakes')"><span class="emoji">🥞</span><strong>Pancakes</strong></button>
+    <button class="choice" onclick="pickFood(this,'🍮','Pudding')"><span class="emoji">🍮</span><strong>Pudding</strong></button>
+   </div>
+   <div id="foodFeedback" class="feedback good"></div>
+   <div class="tip">👩‍🍳 <b>Talk with a partner:</b> What ingredients do you need? What do you do first? What happens next?</div>
+   <div class="footerNav"><span></span><button class="btn primary" onclick="go('part1')">Next: Meet the text →</button></div>
+  </section>
+
+  <section class="panel" id="part1">
+   <div class="panelHead"><div><div class="eyebrow">02 · Micro-learning 1</div><h2>What is a procedure text?</h2><p class="sub">A procedure text tells us how to do or make something through clear, ordered instructions.</p></div><span class="time">📘 4 min</span></div>
+   <div class="twoCol">
+    <div class="miniCard" style="background:#fff8e9"><div style="font-size:35px">🍳</div><h3>Its purpose</h3><p>To explain <b>how to make, do, or use</b> something so readers or listeners can follow the steps.</p></div>
+    <div class="miniCard" style="background:#eef8ff"><div style="font-size:35px">🧭</div><h3>Where can we find it?</h3><p>Recipes, craft instructions, science experiments, user guides, and directions for activities.</p></div>
+   </div>
+   <h3 style="margin-top:22px">A procedure text can be about…</h3>
+   <div class="steps">
+    <div class="step"><div class="n">1</div><b>Making something</b><small>How to make a fruit salad.</small></div>
+    <div class="step"><div class="n">2</div><b>Doing something</b><small>How to wash your hands correctly.</small></div>
+    <div class="step"><div class="n">3</div><b>Explaining a process</b><small>How a simple process happens, step by step.</small></div>
+   </div>
+   <div class="tip">This learning adventure focuses on a <b>recipe</b>. Procedure texts can also explain processes connected to personal experiences or historical events, but the same key idea remains: explain the sequence clearly.</div>
+   <div class="footerNav"><button class="btn soft" onclick="go('warmup')">← Back</button><button class="btn primary" onclick="go('part2')">Next: Text structure →</button></div>
+  </section>
+
+  <section class="panel" id="part2">
+   <div class="panelHead"><div><div class="eyebrow">03 · Micro-learning 2</div><h2>Three parts, one clear recipe</h2><p class="sub">A good recipe guides readers from the goal to the final result.</p></div><span class="time">🧩 4 min</span></div>
+   <div class="steps">
+    <div class="step" style="background:#fff4ed"><div class="n">01</div><b>Goal / Title</b><small>What are you going to make?<br><i>How to Make Banana Fritters</i></small></div>
+    <div class="step" style="background:#fff9e7"><div class="n">02</div><b>Ingredients / Materials</b><small>What do you need?<br><i>2 bananas, flour, water…</i></small></div>
+    <div class="step" style="background:#edfbf5"><div class="n">03</div><b>Steps / Method</b><small>What should you do?<br><i>First, peel the bananas…</i></small></div>
+   </div>
+   <h3>Tap to explore each part</h3>
+   <div class="twoCol">
+    <button class="miniCard" onclick="explain('Goal / Title','The title tells the reader the activity or food. Start with “How to…” for a recipe. Example: How to Make Banana Fritters.')"><h3>🎯 Goal / Title <span class="word">Tap me</span></h3><p>Names the recipe or activity.</p></button>
+    <button class="miniCard" onclick="explain('Ingredients','List the food items and quantities. Example: 2 ripe bananas, 5 tablespoons of flour, and 100 ml of water.')"><h3>🥣 Ingredients <span class="word">Tap me</span></h3><p>Lists what you need before starting.</p></button>
+    <button class="miniCard" onclick="explain('Steps / Method','Write actions in the correct order. Use one instruction for each step. Example: Mix the flour and water.')"><h3>👣 Steps / Method <span class="word">Tap me</span></h3><p>Explains how to do it in order.</p></button>
+    <div class="miniCard"><h3>🧠 Remember</h3><p>Put the steps in a logical order. A reader should be able to follow them without guessing.</p></div>
+   </div>
+   <div class="footerNav"><button class="btn soft" onclick="go('part1')">← Back</button><button class="btn primary" onclick="go('part3')">Next: Language tools →</button></div>
+  </section>
+
+  <section class="panel" id="part3">
+   <div class="panelHead"><div><div class="eyebrow">04 · Micro-learning 3</div><h2>Words that make instructions work</h2><p class="sub">Use action words, sequence words, and clear commands.</p></div><span class="time">🔤 5 min</span></div>
+   <div class="twoCol">
+    <div class="miniCard"><h3>💪 Action verbs</h3><p>These words tell the reader what to do.</p><span class="word">cut</span><span class="word">mix</span><span class="word">pour</span><span class="word">add</span><span class="word">stir</span><span class="word">boil</span><span class="word">fry</span><span class="word">serve</span></div>
+    <div class="miniCard"><h3>➡️ Sequence words</h3><p>These words show the order of actions.</p><span class="word">First</span><span class="word">Next</span><span class="word">Then</span><span class="word">After that</span><span class="word">Finally</span></div>
+   </div>
+   <div class="example"><h3>🔎 Notice the language!</h3><p><b>First,</b> peel the bananas. <b>Next,</b> mix the flour and water. <b>Then,</b> dip the bananas into the batter. <b>Finally,</b> fry them until golden.</p></div>
+   <div class="miniCard"><h3>📌 Language features</h3><ul><li><b>Imperative sentences:</b> “Cut the onion.” / “Add some salt.”</li><li><b>Ingredients and quantities:</b> “two eggs”, “a cup of milk”.</li><li><b>Simple present form:</b> “The mixture becomes thick.”</li><li><b>Clear sequence:</b> use ordering words to avoid confusion.</li></ul></div>
+   <div class="tip">Safety reminder: ask an adult for help when using a knife, stove, hot oil, or other kitchen equipment.</div>
+   <div class="footerNav"><button class="btn soft" onclick="go('part2')">← Back</button><button class="btn primary" onclick="go('part4')">Next: Recipe example →</button></div>
+  </section>
+
+  <section class="panel" id="part4">
+   <div class="panelHead"><div><div class="eyebrow">05 · Micro-learning 4</div><h2>Read the secret recipe</h2><p class="sub">Let's see how the three parts and language features work together.</p></div><span class="time">🍌 5 min</span></div>
+   <div class="example">
+    <span class="badge">SAMPLE RECIPE</span><h3 style="font-size:22px;margin-top:10px">How to Make Banana Fritters</h3>
+    <b>Ingredients:</b><ul><li>2 ripe bananas</li><li>5 tablespoons of flour</li><li>100 ml of water</li><li>A little sugar and salt</li><li>Cooking oil</li></ul>
+    <b>Steps:</b><ol><li>First, peel the bananas and cut them into small pieces.</li><li>Next, mix the flour, water, sugar, and salt in a bowl.</li><li>Then, dip the banana pieces into the batter.</li><li>After that, ask an adult to fry them in hot oil until golden brown.</li><li>Finally, drain the fritters and serve them on a plate.</li></ol>
+   </div>
+   <h3>Quick reading check</h3><p class="sub">What does the word “Finally” tell us?</p>
+   <div class="choiceGrid" style="grid-template-columns:1fr 1fr"><button class="choice" onclick="checkMini(this,false,'It introduces the first action. Look for a word that signals the last step.')">The first step</button><button class="choice" onclick="checkMini(this,true,'Correct! “Finally” introduces the last step in a sequence.')">The last step</button></div>
+   <div id="miniFeedback" class="feedback"></div>
+   <div class="footerNav"><button class="btn soft" onclick="go('part3')">← Back</button><button class="btn primary" onclick="go('quiz')">Ready for the challenge? →</button></div>
+  </section>
+
+  <section class="panel" id="quiz">
+   <div class="panelHead"><div><div class="eyebrow">06 · Formative assessment</div><h2>Chef's quick challenge!</h2><p class="sub">Answer all four questions. Choose one answer for each question and read the feedback.</p></div><span class="time">🏅 4 questions</span></div>
+   <div id="quizArea">
+    <div class="quizQ" data-answer="1"><h3>1. What is the main purpose of a procedure text?</h3><div class="answers"><button class="answer" onclick="answer(this,0)">To describe someone's appearance</button><button class="answer" onclick="answer(this,1)">To explain how to do or make something</button><button class="answer" onclick="answer(this,2)">To tell an imaginary story</button></div><div class="explain">A procedure text gives ordered instructions so readers can do or make something.</div></div>
+    <div class="quizQ" data-answer="2"><h3>2. Which part tells us the things we need?</h3><div class="answers"><button class="answer" onclick="answer(this,0)">Goal / Title</button><button class="answer" onclick="answer(this,1)">Steps / Method</button><button class="answer" onclick="answer(this,2)">Ingredients / Materials</button></div><div class="explain">Ingredients or materials list the items needed, often with quantities.</div></div>
+    <div class="quizQ" data-answer="0"><h3>3. Which word is an action verb?</h3><div class="answers"><button class="answer" onclick="answer(this,0)">Stir</button><button class="answer" onclick="answer(this,1)">Beautiful</button><button class="answer" onclick="answer(this,2)">Yesterday</button></div><div class="explain">“Stir” is an action verb. It tells someone what action to do.</div></div>
+    <div class="quizQ" data-answer="1"><h3>4. Which sequence word usually introduces the last step?</h3><div class="answers"><button class="answer" onclick="answer(this,0)">First</button><button class="answer" onclick="answer(this,1)">Finally</button><button class="answer" onclick="answer(this,2)">Next</button></div><div class="explain">“Finally” signals the final action or step.</div></div>
+   </div>
+   <div class="promptBox" style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap"><div><b>Your score: <span id="score">0</span> / 4</b><div class="tiny" id="scoreHint">Answer the questions to see your score.</div></div><button class="btn secondary" onclick="resetQuiz()">↻ Try again</button></div>
+   <div class="footerNav"><button class="btn soft" onclick="go('part4')">← Back</button><button class="btn primary" onclick="go('mission')">Go to my mission →</button></div>
+  </section>
+
+  <section class="panel" id="mission">
+   <div class="panelHead"><div><div class="eyebrow">07 · Authentic learning project</div><h2>Create your secret recipe!</h2><p class="sub">Your mission: write a recipe for a food or drink you enjoy at home or in your neighbourhood. Make it clear enough for a friend to follow.</p></div><span class="time">🚀 Final mission</span></div>
+   <div class="promptBox"><h3>🌟 Mission checklist</h3><p>Choose a familiar local food—such as nasi pecel, fried rice, banana fritters, or a family favourite. Ask a family member about the ingredients and steps. Write in English, then practise reading your recipe aloud.</p></div>
+   <div class="builderGrid">
+    <div>
+     <div class="field"><label for="recipeName">1. Recipe title</label><input id="recipeName" placeholder="e.g. How to Make My Favourite Snack"></div>
+     <div class="field"><label for="ingredients">2. Ingredients and quantities</label><textarea id="ingredients" placeholder="e.g. 2 bananas&#10;5 tablespoons of flour&#10;100 ml of water"></textarea></div>
+     <div class="field"><label for="stepsInput">3. Steps (use sequence words)</label><textarea id="stepsInput" placeholder="First, ...&#10;Next, ...&#10;Then, ...&#10;Finally, ..."></textarea></div>
+     <div class="field"><label for="secret">4. My secret tip / family story (optional)</label><input id="secret" placeholder="e.g. My grandmother adds a little vanilla."></div>
+     <button class="btn primary" onclick="makeRecipe()">✨ Create my recipe card</button>
+    </div>
+    <div>
+     <div class="recipeOutput" id="recipeOutput"><h3>📜 Your recipe card</h3><p class="empty">Your recipe will appear here. Fill in the fields and click “Create my recipe card”.</p></div>
+     <button class="btn secondary" style="margin-top:10px" onclick="printRecipe()">🖨️ Print recipe card</button>
+    </div>
+   </div>
+   <div class="tip"><b>Share it!</b> Present your recipe to a partner or record a 1-minute cooking tutorial in English. Ask a family member to check that the steps are safe and correct. You can also create a mini class recipe book.</div>
+   <div class="miniCard"><h3>✅ Success criteria</h3><ul><li>I include a clear title / goal.</li><li>I list ingredients and quantities.</li><li>I write steps in a logical order.</li><li>I use action verbs and sequence words.</li><li>I can read or present my recipe clearly.</li></ul></div>
+   <div class="footerNav"><button class="btn soft" onclick="go('quiz')">← Back to quiz</button><button class="btn primary" onclick="finish()">Finish learning 🎉</button></div>
+   <div id="finishFeedback" class="feedback good"></div>
+  </section>
+ </main>
+</div>
+</div>
+<div class="modalBack" id="modal" onclick="if(event.target===this)hideModal()"><div class="modal"><button class="close" onclick="hideModal()">✕</button><div style="font-size:34px">🎯</div><h3>Today's learning goals</h3><p>By the end of this lesson, you can:</p><ul><li>Explain the purpose of a procedure text.</li><li>Identify its goal, ingredients/materials, and steps.</li><li>Use action verbs and sequence words.</li><li>Write and present a simple favourite-food recipe.</li></ul><button class="btn primary" onclick="hideModal()">Let's learn!</button></div></div>
+<script>
+const pages=['warmup','part1','part2','part3','part4','quiz','mission'];let visited=new Set(['warmup']);let quizAnswers={};let selectedFood='';
+function go(id){pages.forEach(p=>document.getElementById(p).classList.toggle('active',p===id));document.querySelectorAll('.navbtn').forEach(b=>{b.classList.toggle('active',b.dataset.page===id);b.classList.toggle('done',visited.has(b.dataset.page)&&b.dataset.page!==id)});visited.add(id);updateProgress();window.scrollTo({top:0,behavior:'smooth'})}
+function updateProgress(){let pct=Math.round(visited.size/pages.length*100);document.getElementById('progressBar').style.width=pct+'%';document.getElementById('progressText').textContent=pct+'% completed'}
+function pickFood(el,emoji,name){document.querySelectorAll('.choice').forEach(c=>c.classList.remove('selected'));el.classList.add('selected');selectedFood=name;let f=document.getElementById('foodFeedback');f.textContent='Great choice! '+emoji+' '+name+' — can you name two ingredients and explain the first step? Tell a partner.';f.className='feedback good show'}
+function showModal(){document.getElementById('modal').classList.add('show')}function hideModal(){document.getElementById('modal').classList.remove('show')}
+function explain(title,body){document.getElementById('modal').innerHTML='<div class="modal"><button class="close" onclick="hideModal()">✕</button><div style="font-size:30px">💡</div><h3>'+title+'</h3><p>'+body+'</p><button class="btn primary" onclick="hideModal()">Got it!</button></div>';showModal()}
+function checkMini(el,ok,msg){document.querySelectorAll('#part4 .choice').forEach(c=>c.classList.remove('selected'));el.classList.add('selected');let f=document.getElementById('miniFeedback');f.textContent=msg;f.className='feedback '+(ok?'good':'hint')+' show'}
+function answer(btn,index){let q=btn.closest('.quizQ');let qi=[...document.querySelectorAll('.quizQ')].indexOf(q);if(quizAnswers[qi]!==undefined)return;let correct=Number(q.dataset.answer);quizAnswers[qi]=index;let buttons=q.querySelectorAll('.answer');buttons.forEach((b,i)=>{b.disabled=true;if(i===correct)b.classList.add('correct')});if(index!==correct)btn.classList.add('wrong');q.querySelector('.explain').classList.add('show');updateScore()}
+function updateScore(){let score=Object.keys(quizAnswers).filter(k=>quizAnswers[k]===Number(document.querySelectorAll('.quizQ')[k].dataset.answer)).length;document.getElementById('score').textContent=score;let n=Object.keys(quizAnswers).length;document.getElementById('scoreHint').textContent=n===4?(score>=3?'Excellent work, young chef!':'Good effort! Review the explanations and try again.'):`${n} of 4 questions answered.`}
+function resetQuiz(){quizAnswers={};document.querySelectorAll('.quizQ').forEach(q=>{q.querySelectorAll('.answer').forEach(b=>{b.disabled=false;b.classList.remove('correct','wrong')});q.querySelector('.explain').classList.remove('show')});updateScore()}
+function makeRecipe(){let title=document.getElementById('recipeName').value.trim();let ing=document.getElementById('ingredients').value.trim();let steps=document.getElementById('stepsInput').value.trim();let secret=document.getElementById('secret').value.trim();if(!title||!ing||!steps){alert('Please fill in the title, ingredients, and steps first.');return}const esc=s=>s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));let list=(s)=>s.split('\n').map(x=>x.trim()).filter(Boolean).map(x=>'<li>'+esc(x.replace(/^[-•]\s*/,''))+'</li>').join('');document.getElementById('recipeOutput').innerHTML='<h3>📜 '+esc(title)+'</h3><b>Ingredients</b><ul>'+list(ing)+'</ul><b>Steps</b><ol>'+list(steps)+'</ol>'+(secret?'<p><b>My secret tip:</b> '+esc(secret)+'</p>':'')+'<p class="tiny">Made with love at Secret Recipe Lab 💛</p>';document.getElementById('recipeOutput').dataset.ready='yes'}
+function printRecipe(){let out=document.getElementById('recipeOutput');if(out.dataset.ready!=='yes'){alert('Create your recipe card first.');return}let w=window.open('','_blank');w.document.write('<html><head><title>My Secret Recipe</title><style>body{font-family:Arial;padding:35px;color:#29334b;line-height:1.6}h3{color:#d75e4e}</style></head><body>'+out.innerHTML+'</body></html>');w.document.close();w.print()}
+function finish(){let f=document.getElementById('finishFeedback');f.textContent='Congratulations, young chef! You have completed the learning adventure. Keep practising English by sharing recipes from your home and community. 🎉';f.className='feedback good show';visited.add('mission');updateProgress()}
+updateProgress();
+</script>
+</body></html>
